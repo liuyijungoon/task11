@@ -24,7 +24,7 @@ function addStudentAchievement(studentinfotable) {
             //console.log(stuInfo1.split(','));
             if(stuInfo1.split(',').length===7){
                 studentinfotable.push(stuInfo1.split(','));
-                console.log('学生'+stuInfo.split(',')[0]+'的成绩被添加');
+                console.log('学生'+stuInfo1.split(',')[0]+'的成绩被添加');
                 return studentinfotable;
             }
         }
