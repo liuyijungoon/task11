@@ -1,6 +1,21 @@
 function main() {
-    let	query = require('cli-interact').getYesNo;
-    let answer = query('Is it true');
-    console.log('you answered:', answer);
+    let stuinfos=[];
+    let result;
+    let stunumber;
+    const printmainmenu= require('./printmainmenu');
+    const addStudentAchievement= require('./addStudentAchievement');
+    const printReportPrompt= require('./printReportPrompt');
+    let whattodo = printmainmenu();
+    if (whattodo==='1'){
+        stuinfos.push(addStudentAchievement(stuinfos));
+    }else if(whattodo==='2'){
+        stunumber=printReportPrompt();
+        stunumber.forEach(function (item,index) {
+            if()
+
+        })
+    }
+    console.log(stuinfos)
 }
+main();
 module.exports=main;
