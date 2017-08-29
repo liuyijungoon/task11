@@ -6,11 +6,22 @@ function find(arr,ch) {
     }
     return false;
 }
+function findMidNumber(arr) {
+    let newarr=arr.sort();
+    if(arr.length%2===0){
+        return (newarr[arr.length/2]+newarr[arr.length/2-1])/2;
+    }else{
+        return newarr[(arr.length-1)/2];
+    }
+}
 function main() {
     let toprinttext='成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================';
     let stuinfos=[];
-    let result;
-    let stunumbe=[];
+    let sum=0;
+    let person=0;
+    let scores=[];
+    let mid=0;
+    let stunumber=[];
     const printmainmenu= require('./printmainmenu');
     const addStudentAchievement= require('./addStudentAchievement');
     const printReportPrompt= require('./printReportPrompt');
@@ -29,8 +40,13 @@ function main() {
                 if(obj!==false){
                     toprinttext=toprinttext+'\n'+obj[0]+'|'+obj[4].split(':')[1]+'|'+obj[3].split(':')[1]+'|'+obj[5].split(':')[1]+'|'+obj[6].split(':')[1]+'|'+(Number(obj[4].split(':')[1])+Number(obj[3].split(':')[1])+Number(obj[5].split(':')[1])+Number(obj[6].split(':')[1]))/4;
                     toprinttext=toprinttext+'|'+(Number(obj[4].split(':')[1])+Number(obj[3].split(':')[1])+Number(obj[5].split(':')[1])+Number(obj[6].split(':')[1]));
+                    sum=sum+(Number(obj[4].split(':')[1])+Number(obj[3].split(':')[1])+Number(obj[5].split(':')[1])+Number(obj[6].split(':')[1]));
+                    person+=1;
+                    scores.push(Number(obj[4].split(':')[1])+Number(obj[3].split(':')[1])+Number(obj[5].split(':')[1])+Number(obj[6].split(':')[1]));
                 }
             });
+            toprinttext=toprinttext+'\n========================\n全班总分平均数:'+sum/person+'\n全班总分中位数:'+findMidNumber(scores);
+
             console.log(toprinttext);
             return toprinttext;
         }
